@@ -1,4 +1,4 @@
-# Keycloak - ADFinance
+# Keycloak
 
 Custom Keycloak deployment with branded theme, email-based 2FA (OTP), and Docker containerization.
 
