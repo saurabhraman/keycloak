@@ -4,7 +4,7 @@ Custom Keycloak deployment with branded theme, email-based 2FA (OTP), and Docker
 
 ## Features
 
-- **Custom ADFinance Theme** - Branded login, account, and email templates
+- **Custom Theme** - Branded login, account, and email templates
 - **Email OTP 2FA** - Two-factor authentication via email using [keycloak-2fa-email-authenticator](https://github.com/mesutpiskin/keycloak-2fa-email-authenticator)
 - **PostgreSQL** - Dedicated database included in the stack
 - **Fully Configurable** - All settings via `.env` file
@@ -39,7 +39,7 @@ keycloak-app/
 │   └── create-user.sh        # Create users via CLI
 └── theme/
     └── malawi/
-        ├── login/            # Login pages (ADFinance branded)
+        ├── login/            # Login pages (branded)
         │   ├── template.ftl
         │   ├── login.ftl
         │   ├── register.ftl
