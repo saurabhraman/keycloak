@@ -1,0 +1,388 @@
+/* =============================================================================
+   ADFinance Login Theme
+   Clean, modern login design with white card, grid background, orange accent
+   ============================================================================= */
+
+/* --- Reset & Base --- */
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.adf-login-body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Inter', Roboto, sans-serif;
+    background-color: #fafafa;
+    background-image:
+        linear-gradient(rgba(0,0,0,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0,0,0,0.03) 1px, transparent 1px);
+    background-size: 24px 24px;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #1f2937;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* --- Card Wrapper --- */
+.adf-login-wrapper {
+    width: 100%;
+    max-width: 440px;
+    padding: 16px;
+}
+
+.adf-login-card {
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 40px 36px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.08), 0 8px 24px rgba(0,0,0,0.04);
+}
+
+/* --- Header / Logo --- */
+.adf-login-header {
+    text-align: center;
+    margin-bottom: 28px;
+}
+
+.adf-logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.adf-logo img {
+    height: 36px;
+    width: auto;
+}
+
+.adf-logo-text {
+    font-size: 22px;
+    font-weight: 700;
+    color: #1f2937;
+    letter-spacing: -0.02em;
+}
+
+.adf-title {
+    font-size: 22px;
+    font-weight: 700;
+    color: #111827;
+    margin: 0 0 4px 0;
+    letter-spacing: -0.01em;
+}
+
+.adf-subtitle {
+    font-size: 14px;
+    color: #6b7280;
+    margin: 0 0 24px 0;
+    text-align: center;
+}
+
+/* --- Form Elements --- */
+.adf-form-group {
+    margin-bottom: 18px;
+}
+
+.adf-label {
+    display: block;
+    font-size: 13px;
+    font-weight: 600;
+    color: #374151;
+    margin-bottom: 6px;
+}
+
+.adf-required {
+    color: #ef4444;
+    margin-left: 2px;
+}
+
+.adf-input-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.adf-input-icon {
+    position: absolute;
+    left: 12px;
+    display: flex;
+    align-items: center;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.adf-input {
+    width: 100%;
+    height: 44px;
+    padding: 0 40px 0 40px;
+    font-size: 14px;
+    color: #1f2937;
+    background: #ffffff;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    outline: none;
+    transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+.adf-input::placeholder {
+    color: #9ca3af;
+}
+
+.adf-input:focus {
+    border-color: #f59e0b;
+    box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.12);
+}
+
+.adf-input-error {
+    border-color: #ef4444;
+}
+
+.adf-input-error:focus {
+    box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.12);
+}
+
+.adf-toggle-password {
+    position: absolute;
+    right: 12px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    padding: 4px;
+}
+
+.adf-toggle-password:hover svg {
+    stroke: #6b7280;
+}
+
+.adf-error-message {
+    display: block;
+    font-size: 12px;
+    color: #ef4444;
+    margin-top: 4px;
+}
+
+/* --- Forgot Password --- */
+.adf-forgot-password {
+    text-align: left;
+    margin-bottom: 20px;
+}
+
+.adf-forgot-password a {
+    font-size: 13px;
+    font-weight: 500;
+    color: #f59e0b;
+    text-decoration: none;
+}
+
+.adf-forgot-password a:hover {
+    color: #d97706;
+    text-decoration: underline;
+}
+
+/* --- Primary Button --- */
+.adf-btn-primary {
+    width: 100%;
+    height: 44px;
+    font-size: 15px;
+    font-weight: 600;
+    color: #ffffff;
+    background: #f59e0b;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.15s, transform 0.1s;
+}
+
+.adf-btn-primary:hover {
+    background: #d97706;
+}
+
+.adf-btn-primary:active {
+    transform: scale(0.99);
+}
+
+/* --- Social Providers --- */
+.adf-social-divider {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    margin: 20px 0;
+    color: #9ca3af;
+    font-size: 13px;
+}
+
+.adf-social-divider::before,
+.adf-social-divider::after {
+    content: '';
+    flex: 1;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.adf-social-divider span {
+    padding: 0 12px;
+}
+
+.adf-social-providers {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.adf-btn-social {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: 100%;
+    height: 42px;
+    font-size: 14px;
+    font-weight: 500;
+    color: #374151;
+    background: #ffffff;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: background-color 0.15s;
+}
+
+.adf-btn-social:hover {
+    background: #f9fafb;
+}
+
+/* --- Footer / Info / Links --- */
+.adf-info {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.adf-footer-text {
+    margin-top: 24px;
+    text-align: center;
+    font-size: 14px;
+    color: #6b7280;
+}
+
+.adf-link {
+    color: #f59e0b;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.adf-link:hover {
+    color: #d97706;
+    text-decoration: underline;
+}
+
+.adf-link-accent {
+    color: #f59e0b;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.adf-link-accent:hover {
+    color: #d97706;
+    text-decoration: underline;
+}
+
+/* --- Alert Messages --- */
+.adf-alert {
+    padding: 10px 14px;
+    border-radius: 8px;
+    font-size: 13px;
+    margin-bottom: 20px;
+}
+
+.adf-alert-error {
+    background: #fef2f2;
+    color: #991b1b;
+    border: 1px solid #fecaca;
+}
+
+.adf-alert-success {
+    background: #f0fdf4;
+    color: #166534;
+    border: 1px solid #bbf7d0;
+}
+
+.adf-alert-warning {
+    background: #fffbeb;
+    color: #92400e;
+    border: 1px solid #fde68a;
+}
+
+.adf-alert-info {
+    background: #eff6ff;
+    color: #1e40af;
+    border: 1px solid #bfdbfe;
+}
+
+/* --- Attempted Username (multi-step flow) --- */
+.adf-attempted-username {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 8px 16px;
+    margin-bottom: 20px;
+    background: #f3f4f6;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 500;
+    color: #374151;
+}
+
+.adf-attempted-username a {
+    color: #6b7280;
+    display: flex;
+}
+
+.adf-attempted-username a:hover {
+    color: #f59e0b;
+}
+
+/* --- Locale Switcher --- */
+.adf-locale {
+    text-align: right;
+    margin-bottom: 16px;
+}
+
+.adf-locale select {
+    font-size: 13px;
+    padding: 4px 8px;
+    border: 1px solid #d1d5db;
+    border-radius: 6px;
+    background: #fff;
+    color: #6b7280;
+    cursor: pointer;
+}
+
+/* --- Responsive --- */
+@media (max-width: 480px) {
+    .adf-login-card {
+        padding: 28px 20px;
+        border-radius: 0;
+        box-shadow: none;
+    }
+
+    .adf-login-body {
+        background-image: none;
+        background-color: #ffffff;
+    }
+}
+
+/* --- Override default Keycloak styles that may leak through --- */
+#kc-header,
+#kc-header-wrapper,
+.login-pf-page,
+.card-pf {
+    all: unset;
+}
+
+body.adf-login-body #kc-header {
+    display: none;
+}

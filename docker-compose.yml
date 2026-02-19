@@ -1,0 +1,57 @@
+services:
+  postgres:
+    image: ${POSTGRES_IMAGE:-postgres:17-alpine}
+    container_name: ${POSTGRES_CONTAINER_NAME:-keycloak-postgres}
+    ports:
+      - "${POSTGRES_HOST_PORT:-5432}:5432"
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB:-keycloak}
+      POSTGRES_USER: ${POSTGRES_USER:-postgres}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-postgres}
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-postgres} -d ${POSTGRES_DB:-keycloak}"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  keycloak:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        KEYCLOAK_VERSION: ${KEYCLOAK_VERSION:-26.5.2}
+    image: ${KEYCLOAK_IMAGE:-keycloak-custom:latest}
+    container_name: ${KEYCLOAK_CONTAINER_NAME:-keycloak}
+    depends_on:
+      postgres:
+        condition: service_healthy
+    command:
+      - start
+      - --hostname=${KC_HOSTNAME}
+      - --hostname-strict=${KC_HOSTNAME_STRICT:-false}
+      - --http-enabled=${KC_HTTP_ENABLED:-true}
+      - --proxy-headers=${KC_PROXY_HEADERS:-xforwarded}
+      - --spi-theme-static-max-age=${KC_SPI_THEME_STATIC_MAX_AGE:--1}
+      - --spi-theme-cache-themes=${KC_SPI_THEME_CACHE_THEMES:-false}
+      - --spi-theme-cache-templates=${KC_SPI_THEME_CACHE_TEMPLATES:-false}
+    ports:
+      - "${KEYCLOAK_HOST_PORT:-18080}:${KEYCLOAK_CONTAINER_PORT:-8080}"
+    environment:
+      KC_DB: ${KC_DB:-postgres}
+      KC_DB_URL: jdbc:postgresql://postgres:5432/${POSTGRES_DB:-keycloak}
+      KC_DB_USERNAME: ${POSTGRES_USER:-postgres}
+      KC_DB_PASSWORD: ${POSTGRES_PASSWORD:-postgres}
+      KC_BOOTSTRAP_ADMIN_USERNAME: ${KC_BOOTSTRAP_ADMIN_USERNAME:-admin}
+      KC_BOOTSTRAP_ADMIN_PASSWORD: ${KC_BOOTSTRAP_ADMIN_PASSWORD:-admin}
+      KC_LOG_LEVEL: ${KC_LOG_LEVEL:-info}
+    volumes:
+      - keycloak_data:/opt/keycloak/data
+      - ${KEYCLOAK_THEME_DIR:-./theme}:/opt/keycloak/themes
+    restart: unless-stopped
+
+volumes:
+  postgres_data:
+  keycloak_data:

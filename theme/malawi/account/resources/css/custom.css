@@ -1,0 +1,28 @@
+/* =============================================================================
+   Malawi Custom Account Theme Styles
+   This file is loaded after the default Keycloak account styles.
+   Override any Keycloak account CSS classes here.
+   ============================================================================= */
+
+/* Example: Customize the navbar header */
+/*
+.navbar-pf {
+    background-color: #1a73e8;
+}
+*/
+
+/* Example: Customize the sidebar navigation */
+/*
+.bs-sidebar ul li.active a {
+    color: #1a73e8;
+    border-left-color: #1a73e8;
+}
+*/
+
+/* Example: Customize the submit buttons */
+/*
+.btn-primary {
+    background-color: #1a73e8;
+    border-color: #1a73e8;
+}
+*/
